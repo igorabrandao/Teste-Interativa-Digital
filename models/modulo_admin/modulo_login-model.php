@@ -135,7 +135,7 @@
 					if ( $post && defined( 'HOME_URI' ) )
 					{
 						// Set the URL in a variable
-						$this->goto_page(HOME_URI);
+						$this->goto_page(HOME_URI . '/modulo_admin/home_admin');
 					}
 
 					return;
@@ -219,7 +219,7 @@
 			if ( defined( 'HOME_URI' ) )
 			{
 				// Set login URL
-				$login_uri  = HOME_URI . '/modulo_login/';
+				$login_uri  = HOME_URI . '/modulo_admin/';
 
 				// Set the current page
 				$_SESSION['goto_url'] = urlencode( $_SERVER['REQUEST_URI'] );
