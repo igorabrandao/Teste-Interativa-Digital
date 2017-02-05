@@ -58,7 +58,13 @@
                         <form id="form_validation" method="POST" action="#">
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <input type="text" class="form-control" name="NOME" required autofocus>
+                                    <input type="text" class="form-control" name="NOME" value="<?php
+                                            if ( isset($category_info["NOME"]) && strcmp($category_info["NOME"], "") != 0 )
+                                            {
+                                                echo $category_info["NOME"];
+                                            }
+                                        ?>"
+                                    required autofocus>
                                     <label class="form-label">Nome da categoria</label>
                                 </div>
                             </div>

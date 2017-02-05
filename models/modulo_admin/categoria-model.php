@@ -75,16 +75,16 @@
 		 *
 		 * @since 0.1
 		 * @access public
-		 * @id_categorie_ 	=> post ID
+		 * @id_category_ 	=> post ID
 		*/
-		public function get_category_info( $id_categorie_ )
+		public function get_category_info( $id_category_ )
 		{
 			// Select the necessary data from DB
 			$sql = "SELECT `ID_CATEGORIA`, `NOME`
 			FROM 
-				`categories` 
+				`categorias`
 			WHERE 
-				`ID_POST` = " . $id_categorie_ . " AND
+				`ID_CATEGORIA` = " . $id_category_ . " AND
 				`DATA_FECHA` IS NULL";
 
 			// Execute the query

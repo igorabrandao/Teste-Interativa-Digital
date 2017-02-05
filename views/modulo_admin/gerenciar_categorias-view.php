@@ -61,9 +61,6 @@
                                             // Action buttons
                                             echo "<td style='text-align: center;'>
 
-                                                <button type='button' class='btn bg-info waves-effect' title='Visualizar [" . $categorie_name . "]'>
-                                                    <i class='material-icons'>remove_red_eye</i>
-                                                </button>
                                                 <button type='button' class='btn bg-warning waves-effect' title='Editar [" . $categorie_name . "]' onClick='location.href = \"$edit_url\";'>
                                                     <i class='material-icons'>create</i>
                                                 </button>

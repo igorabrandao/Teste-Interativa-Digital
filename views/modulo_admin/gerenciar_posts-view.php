@@ -1,8 +1,5 @@
 <section class="content">
     <div class="container-fluid">
-        <!--<div class="block-header">
-            <h2>ADMINISTRAÇÃO</h2>
-        </div>-->
 
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -17,9 +14,7 @@
                                     <i class="material-icons">more_vert</i>
                                 </a>
                                 <ul class="dropdown-menu pull-right">
-                                    <li><a href="javascript:void(0);">Action</a></li>
-                                    <li><a href="javascript:void(0);">Another action</a></li>
-                                    <li><a href="javascript:void(0);">Something else here</a></li>
+                                    <li><a href="<?php echo HOME_URI . '/modulo_admin/inserir_post' ?>" title="(+) Adicionar nova categoria">(+) Adicionar novo post</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -29,9 +24,10 @@
                             <thead>
                                 <tr>
                                     <tr>
-                                        <th style="white-space: nowrap; text-align: center; width: 10%" title="AÇÕES">AÇÕES</th>
-                                        <th style="white-space: nowrap; text-align: center; width: 20%" title="TÍTULO">TÍTULO</th>
-                                        <th style="white-space: nowrap; text-align: center; width: 20%" title="SUBTÍTULO">SUBTÍTULO</th>
+                                        <th style="white-space: nowrap; text-align: center; width: 15%" title="AÇÕES">AÇÕES</th>
+                                        <th style="white-space: nowrap; text-align: center; width: 15%" title="FOTO">FOTO</th>
+                                        <th style="white-space: nowrap; text-align: center; width: 15%" title="TÍTULO">TÍTULO</th>
+                                        <th style="white-space: nowrap; text-align: center; width: 15%" title="SUBTÍTULO">SUBTÍTULO</th>
                                         <th style="white-space: nowrap; text-align: center; width: 15%" title="TIMESTAMP">TIMESTAMP</th>
                                         <th style="white-space: nowrap; text-align: center; width: 10%" title="CATEGORIA">CATEGORIA</th>
                                         <th style="white-space: nowrap; text-align: center; width: 5%" title="ATIVO">ATIVO</th>
@@ -40,45 +36,129 @@
                             </thead>
                             <tfoot>
                                 <tr>
-                                    <th style="white-space: nowrap; text-align: center; width: 10%" title="AÇÕES">AÇÕES</th>
-                                    <th style="white-space: nowrap; text-align: center; width: 20%" title="TÍTULO">TÍTULO</th>
-                                    <th style="white-space: nowrap; text-align: center; width: 20%" title="SUBTÍTULO">SUBTÍTULO</th>
+                                    <th style="white-space: nowrap; text-align: center; width: 15%" title="AÇÕES">AÇÕES</th>
+                                    <th style="white-space: nowrap; text-align: center; width: 15%" title="FOTO">FOTO</th>
+                                    <th style="white-space: nowrap; text-align: center; width: 15%" title="TÍTULO">TÍTULO</th>
+                                    <th style="white-space: nowrap; text-align: center; width: 15%" title="SUBTÍTULO">SUBTÍTULO</th>
                                     <th style="white-space: nowrap; text-align: center; width: 15%" title="TIMESTAMP">TIMESTAMP</th>
                                     <th style="white-space: nowrap; text-align: center; width: 10%" title="CATEGORIA">CATEGORIA</th>
                                     <th style="white-space: nowrap; text-align: center; width: 5%" title="ATIVO">ATIVO</th>
                                 </tr>
                             </tfoot>
                             <tbody>
-                                <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>Edinburgh</td>
-                                    <td>61</td>
-                                    <td>2011/04/25</td>
-                                    <td>$320,800</td>
-                                </tr>
-                                <tr>
-                                    <td>Garrett Winters</td>
-                                    <td>Accountant</td>
-                                    <td>Tokyo</td>
-                                    <td>63</td>
-                                    <td>2011/07/25</td>
-                                    <td>$170,750</td>
-                                </tr>
-                                <tr>
-                                    <td>Ashton Cox</td>
-                                    <td>Junior Technical Author</td>
-                                    <td>San Francisco</td>
-                                    <td>66</td>
-                                    <td>2009/01/12</td>
-                                    <td>$86,000</td>
-                                </tr>
+                                <?php
+
+                                    // Get the entire categorie list
+                                    $data_value = $modelo->get_posts_list();
+
+                                    // Run through categorie list
+                                    foreach ( $data_value as $value )
+                                    {
+                                        // Check if the register exists
+                                        if ( isset($value["ID_POST"]) && strcmp($value["ID_POST"], "") != 0 )
+                                        {
+                                            // Initialize auxiliar variables
+                                            $is_active = "";
+
+                                            // Init row
+                                            echo "<tr>";
+
+                                            // Edit url
+                                            $edit_url = HOME_URI . '/modulo_admin/inserir_post?action=edit&postID=' . encrypt_decrypt('encrypt', $value["ID_POST"]);
+
+                                            // Action buttons
+                                            echo "<td style='text-align: center;'>
+
+                                                <button type='button' class='btn bg-info waves-effect' title='Visualizar [" . $value["TITULO"] . "]'>
+                                                    <i class='material-icons'>remove_red_eye</i>
+                                                </button>
+                                                <button type='button' class='btn bg-warning waves-effect' title='Editar [" . $value["TITULO"] . "]' onClick='location.href = \"$edit_url\";'>
+                                                    <i class='material-icons'>create</i>
+                                                </button>
+                                                <button type='button' class='btn bg-danger waves-effect' title='Remover [" . $value["TITULO"] . "]' onClick='deletepost(" . $value["ID_POST"] . ");'>
+                                                    <i class='material-icons'>clear</i>
+                                                </button>
+
+                                            </td>";
+
+                                            // EMPLOYEE'S IMAGE
+                                            if ( strcmp($value["FOTO"], "") != 0 )
+                                            {
+                                                echo "<td style='text-align: center;' title='" . $value["TITULO"] . "' >
+                                                <img style='height: 75px;' alt='" . $value["TITULO"] . "' title='" . $value["TITULO"] . "' 
+                                                src='" . HOME_URI . "/resources/posts/" . $value["ID_POST"] . "/" . file_basename($value["FOTO"]) . "." . file_ext($value["FOTO"]) . "' />
+                                                </td>";
+                                            }
+                                            else
+                                            {
+                                                echo "<td style='text-align: center;' title='" . $value["TITULO"] . "' >
+                                                <img style='height: 75px;' alt='" . $value["TITULO"] . "' title='" . $value["TITULO"] . "' 
+                                                src='" . HOME_URI . "/assets/images/avatar_aires.png' />
+                                                </td>";
+                                            }
+
+                                            // Post title
+                                            echo "<td style='text-align: center;' title='" . $value["TITULO"] . "'>" . $value["TITULO"] . "</td>";
+
+                                            // Post subtitle
+                                            echo "<td style='text-align: center;' title='" . $value["SUBTITULO"] . "'>" . $value["SUBTITULO"] . "</td>";
+
+                                            // Post timestamp
+                                            echo "<td style='text-align: center;' title='" . $value["TIMESTAMP"] . "'>" . $value["TIMESTAMP"] . "</td>";
+
+                                            // Post category
+                                            echo "<td style='text-align: center;' title='" . $value["CATEGORIA"] . "'>" . $value["CATEGORIA"] . "</td>";
+
+                                            // Is active
+                                            if ( strcmp($value["DATA_FECHA"], "") == 0 )
+                                            {
+                                                $is_active = "ATIVO";
+                                            }
+                                            else
+                                            {
+                                                $is_active = "INATIVO";
+                                            }
+
+                                            echo "<td style='text-align: center;' title='" . $is_active . "'>" . $is_active . "</td>";
+
+                                            // End content row
+                                            echo "</tr>";
+                                        }
+                                    }
+                                ?>
                             </tbody>
                         </table>
+
+                        <input type="hidden" id="elem_DUMMY" value=""/>
+
                     </div>
                 </div>
             </div>
         </div>
+
+        <script type="text/javascript">
+
+            /** Function to delete the category
+             * @param post_ID_ => category identification
+            */
+            function deletepost( post_ID_ )
+            {
+                if ( confirm("Realmente deseja excluir o post?") == true )
+                {
+                    // Callback to delete the element
+                    sendRequest( '<?php echo HOME_URI;?>/modulo_admin/gerenciar_posts', 'action=delete&type=post&post_ID=' + post_ID_, 'POST', 
+                        '///', document.getElementById('elem_DUMMY'), 'delete' );
+
+                    // Realod the page withou parameters
+                    window.location = window.location.href.split("?")[0];
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+        </script>
 
     </div>
 </section>
