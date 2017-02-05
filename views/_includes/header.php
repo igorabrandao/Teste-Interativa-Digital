@@ -59,4 +59,7 @@
 	    <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
 	    <link href="<?php echo HOME_URI;?>/assets/css/themes/all-themes.css" rel="stylesheet" />
 
+	    <!-- JS -->
+		<script src="<?php echo HOME_URI;?>/functions/global-functions.js"></script>
+
 	</head>

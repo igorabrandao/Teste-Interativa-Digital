@@ -146,7 +146,74 @@
 
 			// /views/modulo_admin/_include_gerenciar_posts.php
 			require ABSPATH . '/views/modulo_admin/_include_gerenciar_posts.php';
-		} // gerenciarposts
+
+			//***********************************************************
+            //** EVENT HANDLER'S
+            //***********************************************************
+
+            // Store the action from $_GET ( insert, login, delete, etc )
+            if ( isset( $_REQUEST["action"] ) )
+            {
+                // Auxiliar variables
+                $action = $_REQUEST["action"];
+
+                // Check the action
+                switch ( $action )
+                {
+                    // Search informations related the specified CNPJ
+                    case 'delete':
+                    {
+                    	// Check wich item should be excluded
+                    	if ( strcmp($_REQUEST["type"], "categorie") == 0 )
+                    	{
+	                        // Call function from model instance
+	                        $modelo->delete_item($_REQUEST["type"], $_REQUEST["categorie_ID"]);
+	                    }
+
+						break;
+                    }
+                }
+            }
+
+		} // gerenciarcategorias
+
+		/**
+		 * Load the page "http://www.example.com/inserir_categoria.php"
+		*/
+		public function inserircategoria( )
+		{
+			// Page title
+			$this->title = 'Inserir/Editar categoria';
+
+			// Function parameter
+			$parametros = ( func_num_args() >= 1 ) ? func_get_arg(0) : array();
+
+			// Load model
+			$modelo = $this->load_model('modulo_admin/categoria-model');
+
+			/** Load files from view **/
+
+			// /views/_includes/header.php
+			require ABSPATH . '/views/_includes/header.php';
+
+			// /views/_includes/security.php (just to admin pages)
+			require ABSPATH . '/views/_includes/security.php';
+
+			// /views/_includes/loading.php
+			require ABSPATH . '/views/_includes/loading.php';
+
+			// /views/_includes/navbar.php
+			require ABSPATH . '/views/_includes/navbar_admin.php';
+
+			// /views/_includes/sidebar_admin.php
+			require ABSPATH . '/views/_includes/sidebar_admin.php';
+
+			// /views/modulo_admin/inserir_categoria-view.php
+			require ABSPATH . '/views/modulo_admin/inserir_categoria-view.php';
+
+			// /views/modulo_admin/_include_inserir_categoria.php
+			require ABSPATH . '/views/modulo_admin/_include_inserir_categoria.php';
+		} // inserircategoria
 
 	} // class ModuloAdminController
 ?>

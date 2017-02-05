@@ -1,3 +1,6 @@
+ <!-- JQuery DataTable Css -->
+<link href="<?php echo HOME_URI;?>/assets/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
+
 <!-- Jquery Core Js -->
 <script src="<?php echo HOME_URI;?>/assets/plugins/jquery/jquery.min.js"></script>
 
