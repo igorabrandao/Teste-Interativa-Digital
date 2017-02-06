@@ -66,10 +66,13 @@
                                             // Edit url
                                             $edit_url = HOME_URI . '/modulo_admin/inserir_post?action=edit&postID=' . encrypt_decrypt('encrypt', $value["ID_POST"]);
 
+                                            // View url
+                                            $view_url = HOME_URI . '/home/visualizar_post?postID=' . encrypt_decrypt('encrypt', $value["ID_POST"]);
+
                                             // Action buttons
                                             echo "<td style='text-align: center;'>
 
-                                                <button type='button' class='btn bg-info waves-effect' title='Visualizar [" . $value["TITULO"] . "]'>
+                                                <button type='button' class='btn bg-info waves-effect' title='Visualizar [" . $value["TITULO"] . "]' onClick='location.href = \"$view_url\";'>
                                                     <i class='material-icons'>remove_red_eye</i>
                                                 </button>
                                                 <button type='button' class='btn bg-warning waves-effect' title='Editar [" . $value["TITULO"] . "]' onClick='location.href = \"$edit_url\";'>
@@ -93,7 +96,7 @@
                                             {
                                                 echo "<td style='text-align: center;' title='" . $value["TITULO"] . "' >
                                                 <img style='height: 75px;' alt='" . $value["TITULO"] . "' title='" . $value["TITULO"] . "' 
-                                                src='" . HOME_URI . "/assets/images/avatar_aires.png' />
+                                                src='" . HOME_URI . "/assets/images/animation-bg.jpg' />
                                                 </td>";
                                             }
 

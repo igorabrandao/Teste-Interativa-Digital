@@ -84,7 +84,7 @@
 		{
 			// Select the necessary data from DB
 			$sql = "SELECT `ID_POST`, `ID_CATEGORIA`, `ID_POST`, `TITULO`, `SUBTITULO`, 
-				`TEXTO`, `TIMESTAMP` 
+				`TEXTO`, `TIMESTAMP`, `FOTO`
 			FROM 
 				`posts` 
 			WHERE 
