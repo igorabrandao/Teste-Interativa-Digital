@@ -33,7 +33,7 @@
             <div class="card">
                 <div class="body">
                     <form id="sign_in" method="POST" action="#">
-                        <div class="msg">Acesso de usuário</div>
+                        <div class="msg">Acesso de usuário: <strong>interativa / K5uGP8m</strong></div>
                         <div class="input-group">
                             <span class="input-group-addon">
                                 <i class="material-icons">person</i>
