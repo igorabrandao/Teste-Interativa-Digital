@@ -51,7 +51,7 @@
 		 * @since 0.1
 		 * @access public
 		*/
-		public function get_posts_list()
+		public function get_posts_list( $id_category_ = null )
 		{
 			// Select the necessary data from DB
 			$sql = "SELECT P.`ID_POST`, P.`ID_CATEGORIA`, C.`NOME` AS CATEGORIA, P.`ID_POST`, P.`TITULO`, P.`SUBTITULO`, 
@@ -61,7 +61,13 @@
 			INNER JOIN 
 				`categorias` as C ON C.`ID_CATEGORIA` = P.`ID_CATEGORIA`
 			WHERE 
-				P.`DATA_FECHA` IS NULL";
+				P.`DATA_FECHA` IS NULL ";
+
+			// Check the category filter
+			if ( isset($id_category_) && strcmp($id_category_, "") != 0 )
+			{
+				$sql .= "AND P.`ID_CATEGORIA` = " . $id_category_;
+			}
 
 			// Execute the query
 			$query = $this->db->query($sql);

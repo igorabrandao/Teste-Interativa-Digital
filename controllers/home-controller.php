@@ -18,6 +18,11 @@
 			// Function parameter
 			$parametros = ( func_num_args() >= 1 ) ? func_get_arg(0) : array();
 
+			// Load models
+			$modelo = $this->load_model('modulo_admin/modulo_login-model');
+			$modelo_posts = $this->load_model('modulo_admin/post-model');
+			$modelo_categorias = $this->load_model('modulo_admin/categoria-model');
+
 			/** Load files from view **/
 
 			// /views/_includes/header.php
@@ -60,9 +65,6 @@
 
 			// /views/_includes/header.php
 			require ABSPATH . '/views/_includes/header.php';
-
-			// /views/_includes/security.php (just to admin pages)
-			require ABSPATH . '/views/_includes/security.php';
 
 			// /views/_includes/loading.php
 			require ABSPATH . '/views/_includes/loading.php';

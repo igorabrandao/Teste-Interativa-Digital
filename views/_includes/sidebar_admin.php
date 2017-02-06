@@ -9,19 +9,14 @@
             <div class="info-container">
                 <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Interativa Digital</div>
                 <div class="email">diretoria@interativadigital.com.br</div>
-                <!--<div class="btn-group user-helper-dropdown">
-                    <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
-                    <ul class="dropdown-menu pull-right">
-                        <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>
-                    </ul>
-                </div>-->
             </div>
         </div>
         <!-- #User Info -->
+
         <!-- Menu -->
         <div class="menu">
             <ul class="list">
-                <li class="header">MAIN NAVIGATION</li>
+                <li class="header">MENU DE NAVEGAÇÃO</li>
                 <li class="active">
                     <a href="<?php echo HOME_URI . '/modulo_admin/home_admin';?>">
                         <i class="material-icons">home</i>
@@ -41,13 +36,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="<?php echo HOME_URI; ?>">
+                    <a target="_blank" href="<?php echo HOME_URI; ?>">
                         <i class="material-icons">directions_run</i>
                         <span>Ir para o Weblog</span>
                     </a>
                 </li>
                 <li>
-                    <a href="<?php echo HOME_URI; ?>">
+                    <a href="<?php echo HOME_URI; ?>/modulo_admin?action=logout">
                         <i class="material-icons">input</i>
                         <span>Sign Out</span>
                     </a>

@@ -1,9 +1,25 @@
     <?php
 
-        // Check if exist an active session
-        if ( !isset($_COOKIE[SESSION_COOKIE]) )
+        // Check if the action was informed
+        if ( isset($_GET['action']) && strcmp($_GET['action'], "logout") == 0 )
         {
-            $modelo->check_userlogin();
+            $modelo->logout();
+        }
+        else
+        {
+            // Check if exist an active session
+            if ( !isset($_COOKIE[SESSION_COOKIE]) )
+            {
+                $modelo->check_userlogin();
+            }
+            else
+            {
+                // Redirection
+                $login_uri  = HOME_URI . '/modulo_admin/home_admin';
+                echo '<meta http-equiv="Refresh" content="0; url=' . $login_uri . '">';
+                echo '<script type="text/javascript">window.location.href = "' . $login_uri . '";</script>';
+                // header('location: ' . $login_uri);
+            }
         }
 
     ?>

@@ -48,10 +48,10 @@
                             <tbody>
                                 <?php
 
-                                    // Get the entire categorie list
+                                    // Get the entire posts list
                                     $data_value = $modelo->get_posts_list();
 
-                                    // Run through categorie list
+                                    // Run through posts list
                                     foreach ( $data_value as $value )
                                     {
                                         // Check if the register exists

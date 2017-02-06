@@ -178,7 +178,7 @@
 		 * @param bool $redirect If true, redirect to login page
 		 * @final
 		*/
-		protected function logout( $redirect = false )
+		public function logout( $redirect = false )
 		{
 			// Remove all data from $_SESSION['userdata']
 			$_SESSION['userdata'] = array();
